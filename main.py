@@ -7,6 +7,13 @@ def encode(plain_password):
 		encoded_password += str((int(i) + 3) % 10);
 	return encoded_password
 
+
+def decode(stored_encoded_password):
+	decoded_password = ""
+	for i in stored_encoded_password:
+		decoded_password += str((int(i) - 3) % 10);
+	return decoded_password
+
 #Main function. Loops the menu.
 def main():
 	while True:
@@ -21,7 +28,8 @@ def main():
 			stored_encoded_password = encode(password); #This variable stores the encoded password.
 			print("Your password has been encoded and stored!")
 		elif user_option == 2:
-			continue #remove the continue keyword and insert your code
+			decoded_password = decode(stored_encoded_password)
+			print(f'The encoded password is {stored_encoded_password}, and the original password is {decoded_password}')
 		elif user_option == 3:
 			break
 
